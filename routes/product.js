@@ -4,10 +4,10 @@ const Product = require('../models/product');
 const productRouter = express.Router();
 
 // Create a new product
-productRouter.post('/api/add-prodct', async(req, res) => {
+productRouter.post('/api/add-product', async(req, res) => {
     try {
-        const {productName, productPrice, quantity, description, category, subCategory, images} = req.body;
-        const product = new Product({productName, productPrice, quantity, description, category, subCategory, images});
+        const {productName, productPrice, quantity, description, category, subCategory, images, vendorId, fullName} = req.body;
+        const product = new Product({productName, productPrice, quantity, description, category, subCategory, images, vendorId, fullName});
         await product.save();
        return res.status(201).send(product);
     } catch (e) {

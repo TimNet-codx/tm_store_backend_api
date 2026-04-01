@@ -27,6 +27,14 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    vendorId:{
+        type: String,
+        required: true
+    },
+    fullName:{
+        type: String,
+        required: true
+    },
     images: [
         {
             type: String,
