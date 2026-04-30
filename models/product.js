@@ -45,6 +45,10 @@ const productSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
+    favourite: {
+        type: Boolean,
+        default: false
+    },
     recommend: {
         type: Boolean,
         default: false
