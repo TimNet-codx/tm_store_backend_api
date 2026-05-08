@@ -15,6 +15,7 @@ subCategoryRouter.post("/api/subcategory", async(req, res) => {
     }
 });
 
+
 // Get SubCategory by Category ID Or Category Name
 subCategoryRouter.get("/api/category/:categoryName/subcategories", async(req, res) => {
     try {

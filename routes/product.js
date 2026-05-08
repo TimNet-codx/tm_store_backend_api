@@ -115,4 +115,57 @@ productRouter.get('/api/get-all-products', async(req, res) => {
     }
 });
 
+//Get Product By Id, Category, and Details
+productRouter.get("/api/get-productByIdAndCategory", async(req, res) =>  {
+    try{
+        const {productId, category} = req.query;
+
+        if(!productId || !category){
+            return res.status(400).json({msg: "Product ID and Category are required"});
+        }
+
+        const product = await Product.findOne({_id: productId, category: category});
+
+        if(!product){
+            return res.status(404).json({msg: "Product not found"});
+        } else{
+            return res.status(200).json({product});
+        }
+
+    }catch(e){
+        res.status(400).json({error: e.message}); 
+    }
+}) 
+
+productRouter.get("/api/products/details", async (req, res) => {
+  try {
+    const { productId, category } = req.query;
+
+    if (!productId || !category) {
+      return res.status(400).json({
+        msg: "Product ID and category are required",
+      });
+    }
+
+    const product = await Product.findOne({
+      _id: productId,
+      category,
+    })
+      .populate("category", "name slug")
+      .populate("seller", "name email phone");
+
+    if (!product) {
+      return res.status(404).json({ msg: "Product not found" });
+    }
+
+    res.status(200).json({ product });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+//Get Product By Id and  Category
+
+
+
 module.exports = productRouter;
