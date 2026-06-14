@@ -1,5 +1,7 @@
-const mongoose = require('mongoose');
-const subCategory = require('./sub_category');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+// const subCategory = require('./sub_category');
+import subCategory from './sub_category.js';
 
 const productSchema = new mongoose.Schema({
     productName: {
@@ -63,4 +65,6 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model("Product", productSchema);
 
-module.exports = Product;
+// module.exports = Product;
+
+export default Product;

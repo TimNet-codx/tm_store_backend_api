@@ -1,5 +1,6 @@
-const express = require('express');
-const Product = require('../models/product');
+// const express = require('express');
+import express from "express";
+import Product from"../models/product.js";
 
 const productRouter = express.Router();
 
@@ -168,4 +169,5 @@ productRouter.get("/api/products/details", async (req, res) => {
 
 
 
-module.exports = productRouter;
+// module.exports = productRouter;
+export default productRouter;

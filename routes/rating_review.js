@@ -1,5 +1,6 @@
-const express = require('express');
-const ProductReview = require('../models/rating_review');
+// const express = require('express');
+import express from "express";
+import ProductReview from"../models/rating_review.js";
 
 const productReviewRouter = express.Router();
 
@@ -27,4 +28,5 @@ productReviewRouter.get("/api/reviews", async(req, res) => {
     }
 })
 
-module.exports = productReviewRouter;
+// module.exports = productReviewRouter;
+export default productReviewRouter;

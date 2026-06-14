@@ -1,11 +1,12 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const brandsSchema = new mongoose.Schema({
   categoryId: {
     type: String,
     required: true,
   },
-  categoryName: {
+  category: {
     type: String,
     required: true
   },
@@ -24,4 +25,5 @@ const brandsSchema = new mongoose.Schema({
 
 const brands = mongoose.model("Brands", brandsSchema);
 
-module.exports = brands;
+// module.exports = brands;
+export default brands;

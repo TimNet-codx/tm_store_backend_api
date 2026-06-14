@@ -1,5 +1,8 @@
-const express = require('express');
-const Banner = require('../models/banner');
+// const express = require('express');
+import express from 'express';
+// const Banner = require('../models/banner');
+// import Banner from '../models/banner';
+import Banner from '../models/banner.js';
 
 const bannerRouter = express.Router();
 
@@ -25,4 +28,5 @@ bannerRouter.get('/api/banners', async(req, res) => {
     }
 })
 
-module.exports = bannerRouter;
+// module.exports = bannerRouter;
+export default bannerRouter;

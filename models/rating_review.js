@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const ratingReviewSchema = new mongoose.Schema({
  buyerId: {
@@ -29,4 +30,6 @@ const ratingReviewSchema = new mongoose.Schema({
 
 const ProductReview = mongoose.model("ProductReview", ratingReviewSchema);
 
-module.exports = ProductReview;
+// module.exports = ProductReview;
+
+export default ProductReview;

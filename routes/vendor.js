@@ -1,8 +1,13 @@
-const express = require('express');
-const Vendor = require('../models/vendor');
+// const express = require('express');
+import express from "express";
+// import Vendor from"../models/vendor.js";
 const vendorRouter = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+// const bcrypt = require('bcryptjs');
+// const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
+
+import bcrypt from 'bcryptjs';
+import Vendor from '../models/vendor.js';
 
 // Signup api Endpoint
 vendorRouter.post('/api/vendor/signup', async(req, res) => {
@@ -57,6 +62,7 @@ vendorRouter.post('/api/vendor/signin', async(req, res) => {
   }
 });
 
-module.exports = vendorRouter;
+// module.exports = vendorRouter;
+export default vendorRouter;
 
 

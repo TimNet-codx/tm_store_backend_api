@@ -1,5 +1,7 @@
-const express = require('express');
-const Category = require('../models/category');
+// const express = require('express');
+import express from "express";
+
+import Category from '../models/category.js';
 
 const categoryRouter = express.Router();
 
@@ -46,4 +48,5 @@ categoryRouter.get("/api/categories/:name", async(req, res) => {
 });
 
 
-module.exports = categoryRouter;
+// module.exports = categoryRouter;
+export default categoryRouter;

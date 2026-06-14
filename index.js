@@ -56,7 +56,8 @@ import subCategoryRouter from "./routes/sub_category.js";
 import productRouter from "./routes/product.js";
 import productReviewRouter from "./routes/rating_review.js";
 import brandsRouter from "./routes/brand.js";
-import vendorRouter from "./routes/vendor.js";
+import vendorRouter from "./routes/vendor.js"; 
+import cartRouter from "./routes/cart.js";
 
 // Port
 const PORT = 3000;
@@ -65,7 +66,9 @@ const PORT = 3000;
 const app = express();
 
 // Database
-const DB = "mongodb+srv://timNet:2218@cluster0.960xzxw.mongodb.net/TM_App_Store?appName=Cluster0";
+  const DB = "mongodb+srv://timNet:2218@cluster0.960xzxw.mongodb.net/TM_App_Store?appName=Cluster0";
+//const DB = "mongodb://timNet:2218@cluster0-shard-00-00.960xzxw.mongodb.net:27017,cluster0-shard-00-01.960xzxw.mongodb.net:27017,cluster0-shard-00-02.960xzxw.mongodb.net:27017/TM_App_Store?ssl=true&replicaSet=atlas-shard-0&authSource=admin&retryWrites=true&w=majority";
+// const DB = "mongodb://timNet:2218@cluster0-shard-00-00.960xz.mongodb.net:27017,cluster0-shard-00-01.960xz.mongodb.net:27017,cluster0-shard-00-02.960xz.mongodb.net:27017/tm_store?ssl=true&replicaSet=atlas-shard-0&authSource=admin&retryWrites=true&w=majority";
 
 // Middleware
 app.use(express.json());
@@ -80,6 +83,8 @@ app.use(subCategoryRouter);
 app.use(productRouter);
 app.use(productReviewRouter);
 app.use(vendorRouter);
+app.use(cartRouter);
+
 
 // Connect DB & start server
 mongoose

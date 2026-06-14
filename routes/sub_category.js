@@ -1,5 +1,6 @@
-const express = require('express');
-const SubCategory = require('../models/sub_category');
+// const express = require('express');
+import express from "express";
+import SubCategory from"../models/sub_category.js";
 
 const subCategoryRouter = express.Router();
 
@@ -48,4 +49,5 @@ subCategoryRouter.get("/api/subcategories", async(req, res) => {
 });
 
 
-module.exports = subCategoryRouter;
+// module.exports = subCategoryRouter;
+export default subCategoryRouter;
