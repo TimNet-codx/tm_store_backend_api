@@ -127,7 +127,7 @@ const authRouter = express.Router();
 // ================= SIGNUP =================
 authRouter.post("/api/signup", async (req, res) => {
   try {
-    const { fullName, email, password } = req.body;
+    const { fullName, email, password, country, state, city, street, postalCode, phoneNumber } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -141,6 +141,12 @@ authRouter.post("/api/signup", async (req, res) => {
       fullName,
       email,
       password: hashedPassword,
+      country,
+      state,
+      city,
+      street,
+      phoneNumber,
+      postalCode
     });
 
     user = await user.save();
@@ -149,6 +155,12 @@ authRouter.post("/api/signup", async (req, res) => {
       _id: user._id,
       fullName: user.fullName,
       email: user.email,
+      country: user.country,
+      state: user.state,
+      city: user.city,
+      phoneNumber: user.phoneNumber,
+      street: user.street,
+      postalCode: user.postalCode
     });
 
   } catch (e) {

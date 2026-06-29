@@ -70,6 +70,10 @@ const userSchema = mongoose.Schema({
             message: "Please enter a valid email address"
         }  
     },
+    country: {
+        type: String,
+        default: ""
+    },
     state: {
         type: String,
         default: ""
@@ -78,10 +82,19 @@ const userSchema = mongoose.Schema({
         type: String,
         default: ""
     },
-    locality: {
+    street: {
         type: String,
         default: ""
     },
+    postalCode: {
+        type: String,
+        default: ""
+    },
+     phoneNumber: {
+        type: String,
+        default: ""
+    },
+
     password: {
         type: String,
         required: true,

@@ -58,6 +58,7 @@ import productReviewRouter from "./routes/rating_review.js";
 import brandsRouter from "./routes/brand.js";
 import vendorRouter from "./routes/vendor.js"; 
 import cartRouter from "./routes/cart.js";
+import orderRouter from "./routes/order.js";
 
 // Port
 const PORT = 3000;
@@ -84,6 +85,7 @@ app.use(productRouter);
 app.use(productReviewRouter);
 app.use(vendorRouter);
 app.use(cartRouter);
+app.use(orderRouter);
 
 
 // Connect DB & start server
