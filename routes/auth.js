@@ -254,22 +254,86 @@ authRouter.post("/api/signin", async (req, res) => {
 authRouter.get('/api/userDetails', authMiddleware, async (req, res) => {
   try {
     // The userId was attached to the request by the middleware
-    const user = await User.findById(req.userId).select("fullName email");
+    const user = await User.findById(req.userId).select("fullName email country state city street postalCode phoneNumber");
 
     if (!user) {
       return res.status(404).json({ msg: "User not found!" });
     }
 
     // Return the user data
-    res.status(200).json({
+    return res.status(200).json({
       fullName: user.fullName,
-      email: user.email
+      email: user.email,
+      country: user.country,
+      state: user.state,
+      city: user.city,
+      street: user.street,
+      postalCode: user.postalCode,
+      phoneNumber: user.phoneNumber
     });
 
   } catch (error) {
     console.error("UserDetails Error:", error.message);
-    res.status(500).json({ msg: "Server error" });
+    return res.status(500).json({ msg: "Server error" });
   }
 });
+
+authRouter.put('/api/AddOrUpdateUserDetails', authMiddleware, async (req, res) => {
+  try {
+    const {
+      fullName,
+      country,
+      state,
+      city,
+      street,
+      postalCode,
+      phoneNumber
+    } = req.body;
+
+    // Build an update object with only the fields that were actually sent
+    const updateFields = {};
+    if (fullName !== undefined) updateFields.fullName = fullName;
+    if (country !== undefined) updateFields.country = country;
+    if (state !== undefined) updateFields.state = state;
+    if (city !== undefined) updateFields.city = city;
+    if (street !== undefined) updateFields.street = street;
+    if (postalCode !== undefined) updateFields.postalCode = postalCode;
+    if (phoneNumber !== undefined) updateFields.phoneNumber = phoneNumber;
+
+    if (Object.keys(updateFields).length === 0) {
+      return res.status(400).json({ msg: "No fields provided to update!" });
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      req.userId,
+      { $set: updateFields },
+      { new: true, runValidators: true }
+    ).select("fullName email country state city street postalCode phoneNumber");
+
+    if (!updatedUser) {
+      return res.status(404).json({ msg: "User not found!" });
+    }
+
+    return res.status(200).json({
+      msg: "User details updated successfully!",
+      user: {
+        fullName: updatedUser.fullName,
+        email: updatedUser.email,
+        country: updatedUser.country,
+        state: updatedUser.state,
+        city: updatedUser.city,
+        street: updatedUser.street,
+        postalCode: updatedUser.postalCode,
+        phoneNumber: updatedUser.phoneNumber
+      }
+    });
+
+  } catch (error) {
+    console.error("UpdateUserDetails Error:", error.message);
+    return res.status(500).json({ msg: "Server error" });
+  }
+});
+
+
 
 export default authRouter;
