@@ -9,6 +9,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import Vendor from '../models/vendor.js';
 
+
 // Signup api Endpoint
 vendorRouter.post('/api/vendor/signup', async(req, res) => {
     try{
